@@ -1,0 +1,4 @@
+/data/*.json
+!/data/.gitkeep
+.vercel
+.env.local

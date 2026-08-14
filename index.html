@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="api-base" content="/api">
+  <title>Bluefinch Management | Purchase Dashboard</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/modal.css">
+  <link rel="stylesheet" href="assets/dashboard.css">
+  <link rel="stylesheet" href="assets/brand.css">
+  <style>
+    .dashboard-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin:2px 0 26px}.dashboard-kicker{display:block;margin-bottom:7px;font-size:10px;font-weight:800;letter-spacing:1.4px;color:#3879c5}.dashboard-intro h2{margin:0;color:#10223d;font-size:24px;letter-spacing:-.55px}.dashboard-intro p{margin:7px 0 0;color:var(--muted)}.dashboard-create{display:flex;align-items:center;gap:8px;white-space:nowrap}.dashboard-create span{font-size:19px;font-weight:400;line-height:0}.dashboard-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.dashboard-card{min-height:182px;padding:19px 19px 14px;overflow:hidden;position:relative;background:#fff;border:1px solid #e3ebf5;border-radius:15px;box-shadow:0 10px 25px #10223d0a}.dashboard-card:after{position:absolute;content:"";width:145px;height:145px;right:-64px;bottom:-110px;border-radius:50%;background:var(--card-soft)}.dashboard-card.orders{--card:#2275e9;--card-soft:#e8f1ff}.dashboard-card.draft{--card:#e89a00;--card-soft:#fff5db}.dashboard-card.pending{--card:#e76d00;--card-soft:#fff0e5}.dashboard-card.completed{--card:#17a968;--card-soft:#e2f8ed}.metric-top{display:flex;align-items:center;justify-content:space-between}.metric-icon{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;color:var(--card);background:var(--card-soft);font-size:22px;font-style:normal}.metric-trend{font-size:11px;color:var(--muted);white-space:nowrap}.dashboard-card p{margin:17px 0 5px;color:#53647c;font-size:12px;font-weight:700}.dashboard-card strong{font-size:31px;line-height:1;color:#10223d;letter-spacing:-1.2px}.metric-spark{position:absolute;display:flex;align-items:flex-end;gap:5px;height:27px;right:19px;bottom:14px}.metric-spark i{display:block;width:5px;background:var(--card);border-radius:4px 4px 0 0;opacity:.22}.metric-spark i:nth-child(1){height:7px}.metric-spark i:nth-child(2){height:13px}.metric-spark i:nth-child(3){height:10px}.metric-spark i:nth-child(4){height:18px}.metric-spark i:nth-child(5){height:15px}.metric-spark i:nth-child(6){height:25px;opacity:.78}
+    .dashboard-grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(310px,.95fr);gap:18px;margin-top:18px}.dashboard-table-panel,.status-panel{padding:0;overflow:hidden}.dashboard-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:20px 21px 16px}.dashboard-panel-head h3{margin:0;font-size:16px}.dashboard-panel-head p{margin:5px 0 0;color:var(--muted);font-size:12px}.text-action{border:1px solid #d7e7fb;border-radius:8px;padding:7px 10px;background:#f7fbff;color:#1268c4;font-size:12px;font-weight:700;white-space:nowrap;cursor:pointer}.text-action span{margin-left:3px;font-size:15px}.dashboard-table-wrap{overflow-x:auto}.dashboard-table{min-width:760px;border-top:1px solid var(--line)}.dashboard-table th{padding:13px 14px;background:#f7faff;font-size:10px;white-space:nowrap}.dashboard-table td{padding:14px;font-size:12px;color:#32435f;white-space:nowrap}.dashboard-table td:first-child{color:#153c70}.dashboard-table .badge{padding:5px 9px}.dash-actions{display:flex;gap:5px}.dash-actions button{display:grid;place-items:center;width:27px;height:27px;border:1px solid #b9d6f6;border-radius:6px;background:#f8fcff;color:#1972cd;font-weight:800;cursor:pointer}.dash-actions .delete{border-color:#ffc5ca;color:#d7505e;background:#fffafb}
+    .status-chart{display:flex;align-items:center;justify-content:center;gap:25px;padding:5px 20px 26px}.donut{display:grid;place-items:center;flex:0 0 164px;width:164px;height:164px;border-radius:50%;position:relative}.donut:before{content:"";position:absolute;inset:32px;border-radius:50%;background:#fff}.donut div{position:relative;z-index:1;text-align:center}.donut strong{display:block;font-size:26px;letter-spacing:-1px}.donut span{display:block;margin-top:1px;color:var(--muted);font-size:11px}.status-legend{min-width:115px}.legend-row{display:grid;grid-template-columns:10px 1fr auto auto;align-items:center;gap:7px;margin:14px 0;font-size:12px;color:#40506b}.legend-row b{color:#142844}.legend-row em{min-width:28px;color:var(--muted);font-size:10px;font-style:normal;text-align:right}.legend-dot{width:9px;height:9px;border-radius:50%;background:#aab7c8}.legend-dot.Draft{background:#3b82f6}.legend-dot.Pending{background:#f59e0b}.legend-dot.Completed{background:#22c55e}
+    .dashboard-tip{display:flex;align-items:center;gap:17px;margin-top:18px;padding:22px 27px;background:linear-gradient(100deg,#fff,#f4f9ff);border:1px solid #e2ebf5;border-radius:14px;box-shadow:var(--shadow)}.tip-icon{display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#287ee8,#0c51b2);color:#fff;font-size:21px}.dashboard-tip h3{margin:0;font-size:14px}.dashboard-tip p{margin:6px 0 0;color:var(--muted);font-size:12px}.dashboard-tip .text-action{margin-left:auto}.dashboard-empty{margin:0;padding:64px 22px}@media(max-width:1150px){.dashboard-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-grid{grid-template-columns:1fr}.status-chart{justify-content:flex-start;padding-left:32px}}@media(max-width:680px){.dashboard-intro{align-items:flex-start;flex-direction:column;margin-bottom:20px}.dashboard-intro h2{font-size:22px}.dashboard-create{width:100%;justify-content:center}.dashboard-cards{grid-template-columns:1fr;gap:12px}.dashboard-card{min-height:154px}.dashboard-grid{gap:12px;margin-top:12px}.dashboard-panel-head{padding:17px 16px}.status-chart{gap:16px;padding:4px 16px 21px}.donut{flex-basis:138px;width:138px;height:138px}.donut:before{inset:27px}.dashboard-tip{align-items:flex-start;flex-wrap:wrap;padding:18px}.dashboard-tip .text-action{margin:0 0 0 65px}.metric-trend{max-width:145px;overflow:hidden;text-overflow:ellipsis}.dashboard-table{min-width:720px}}
+  </style>
+</head>
+<body>
+  <aside>
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-copy"><b>Bluefinch</b><small>Management</small></span></div>
+    <nav>
+      <button class="nav active" data-view="dashboard">▦ Dashboard</button>
+      <button class="nav" data-view="orders">▤ Purchase Orders</button>
+      <p>MASTERS</p>
+      <button class="nav" data-view="suppliers">♙ Suppliers</button>
+      <button class="nav" data-view="items">▣ Items</button>
+    </nav>
+    <div class="profile">● <span>Administrator<br><small>Procurement Team</small></span></div>
+  </aside>
+  <main>
+    <header>
+      <div><h1 id="title">Dashboard</h1><span id="subtitle">Welcome — here’s your purchasing overview.</span></div>
+      <button class="primary" id="newBtn">＋ New Purchase Order</button>
+    </header>
+    <section id="app"></section>
+  </main>
+  <div id="toast"></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
