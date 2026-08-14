@@ -17,7 +17,16 @@
   </style>
 </head>
 <body>
-  <aside>
+  <div class="mobile-header">
+    <button id="menuToggle" class="mobile-menu-btn" aria-label="Toggle navigation menu">
+      <span class="hamburger-icon"><span></span><span></span><span></span></span>
+    </button>
+    <div class="mobile-brand">
+      <b>Bluefinch</b><small>Management</small>
+    </div>
+  </div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside id="sidebar">
     <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-copy"><b>Bluefinch</b><small>Management</small></span></div>
     <nav>
       <button class="nav active" data-view="dashboard">▦ Dashboard</button>
